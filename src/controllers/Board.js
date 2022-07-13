@@ -18,7 +18,7 @@ export default class Board extends Component {
   }
 
   getStore = () => {
-    //When you create multiple boards, unique stores are created for isolation
+    // When you create multiple boards, unique stores are created for isolation
     return createStore(boardReducer, applyMiddleware(...middlewares))
   }
 
@@ -26,7 +26,6 @@ export default class Board extends Component {
     const {id, className, components} = this.props
     const allClassNames = classNames('react-trello-board', className || '')
     return (
-      <Provider store={this.store}>
         <>
           <components.GlobalStyle />
           <BoardContainer
@@ -34,8 +33,7 @@ export default class Board extends Component {
             {...this.props}
             className={allClassNames}
           />
-       </>
-      </Provider>
+        </>
     )
   }
 }
